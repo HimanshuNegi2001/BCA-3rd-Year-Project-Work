@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Queue Using Linked list</h2>
+</body>
+<script>
+    class Node {
+        constructor(data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    class Queue {
+        constructor() {
+            this.front = 0;
+            this.rear = 0;
+        }
+
+        enqueue(key) {
+            let new_node = new Node(key);
+            new_node.next = null;
+            if (this.front == 0 && this.rear == 0) {
+                this.front = this.rear = new_node;
+            }
+            else {
+                this.rear.next = new_node;
+                this.rear = new_node;
+            }
+        }
+
+        dequeue(){
+            if (this.front == 0 && this.rear == 0) {
+                console.log("Underflow!");
+            }
+            else if(this.rear == this.front){
+                console.log("Dequeue element is: "+this.front.data);
+                this.front = this.rear = 0;
+            }
+            else{
+                console.log("Dequeue element is: "+this.front.data);
+                this.front = this.front.next;
+            }
+        }
+
+        peek(){
+            if (this.front == 0 && this.rear == 0) {
+                console.log("Underflow!");
+            }
+            else{
+                console.log("Peek element is: "+this.front.data);
+            }
+        }
+
+        display() {
+            let temp = this.front;
+            if (this.front == 0 && this.rear == 0) {
+                console.log("Underflow!");
+            }
+            else {
+                console.log("Element in queue ");
+                while (temp != null) {
+                    console.log(temp.data)
+                    temp = temp.next;
+                }
+            }
+        }
+    }
+
+    let ql = new Queue();
+    ql.enqueue(35);
+    ql.enqueue(25);
+    ql.enqueue(85);
+    ql.enqueue(95);
+    ql.display()
+
+    ql.dequeue()
+    ql.display()
+
+    ql.peek()
+
+</script>
+
+</html>

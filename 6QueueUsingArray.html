@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Queue Using Array</h2>
+</body>
+<script>
+    let N = 100
+    let queue = new Array(N);
+    let front = -1;
+    let rear = -1;
+
+    class Queue {
+        Enqueue(data){
+            if (rear == N - 1) {
+                console.log("Overflow!");
+            }
+            else if (front == -1 && rear == -1) {
+                front = rear = 0;
+                queue[rear] = data;
+            }   
+            else{
+                rear++;
+                queue[rear] = data;
+            }
+        }
+
+        Dequeue(){
+            if (front ==-1 && rear == -1 ){
+                console.log("Underflow!");
+            }
+            else{
+                console.log("Dequeue element is: ",queue[front]);
+                front++;
+            }
+        }
+
+        peek(){
+            if (front ==-1 && rear == -1 ){
+                console.log("Underflow!");
+            }
+            else{
+                console.log("Peek element is: "+queue[front]);
+            }
+        }
+        
+        display(){
+            let temp = front;
+            if (front ==-1 && rear == -1 ){
+                console.log("Underflow!");
+            }
+            else{
+                console.log("Element in Queue: ");
+                while(temp<=rear){
+                    console.log(queue[temp]);
+                    temp++;
+                }
+            }
+        }
+    }
+
+    let qu = new Queue();
+    qu.Enqueue(34);
+    qu.Enqueue(94);
+    qu.Enqueue(74);
+    qu.Enqueue(100);
+    qu.display();
+
+    qu.Dequeue();
+    qu.display();
+    qu.peek();
+</script>
+
+</html>

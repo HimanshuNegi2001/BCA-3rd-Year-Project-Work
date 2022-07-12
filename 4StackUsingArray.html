@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Using Array</title>
+</head>
+<body>
+    <h2>Stack Using Array</h2>
+</body>
+<script>
+    function push1(data){
+        if(top1==N-1){
+            console.log("Overflow!");
+        }
+        else{
+            top1= top1+1;
+            Stack[top1] = data;
+        }
+    }
+
+    function pop1(){
+        let item;
+        if(top1==-1){
+            console.log("Underflow!");
+        }
+        else{
+            item =  Stack[top1];
+            top1=top1-1;
+            console.log("pop element is :"+item);
+        }
+    }
+
+    function peek(){
+        if(top1==-1){
+            console.log("Underflow!");
+        }
+        else{
+            console.log("Peek element is: "+Stack[top1]);
+        }
+    }
+
+    function display(){
+        if(top1 ==-1){
+            console.log("Underflow!");
+        }
+        else{
+            console.log("Element in Stack: ")
+            for(let i=0;i<=top1;i++){
+                console.log(Stack[i]);
+            }
+        }
+    }
+
+    let N = 100;
+    let Stack = new Array(N);
+    let top1 = -1;
+    push1(34);
+    push1(12);
+    push1(98);
+    push1(19);
+    push1(25);
+    display();
+
+    pop1();
+    display();
+
+    peek();
+</script>
+</html>

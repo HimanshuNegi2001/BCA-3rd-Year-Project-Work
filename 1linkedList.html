@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List</title>
+</head>
+
+<body>
+    <h1>Linked list</h1>
+</body>
+
+<script>
+    class Node {
+        constructor(data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+    class LinkedList {
+        constructor() {
+            this.next = null;
+            this.size = 0;
+        }
+
+        add(data) {
+
+            var node = new Node(data);
+            var current;
+
+            if (this.head == null) {
+                this.head = node;
+            }
+            else {
+                current = this.head;
+                while (current.next) {
+                    current = current.next;
+                }
+                current.next = node;
+            }
+            this.size++;
+        }
+
+        delete(pos) {
+            if (pos < 0 || pos >= this.size) {
+                return console.log("Please Enter a valid Position");
+            }
+            else {
+                var curr, prev, it = 0;
+                curr = this.head;
+                prev = curr;
+
+                if (pos === 0) {
+                    this.head = curr.next;
+                }
+                else {
+                    while (it < pos) {
+                        it++;
+                        prev = curr;
+                        curr = curr.next;
+                    }
+                    prev.next = curr.next;
+                }
+                this.size--;
+                return curr.data;
+            }
+        }
+
+        deleteN(val) {
+
+            if (this.head.data === val) {
+                this.head = this.head.next;
+            } else {
+                var previousNode = this.head;
+                var currentNode = previousNode.next;
+                while (currentNode) {
+                    if (currentNode.data === val) {
+                        previousNode.next = currentNode.next;
+                        currentNode = currentNode.next;
+                        break;
+                    } else {
+                        previousNode = currentNode;
+                        currentNode = currentNode.next;
+                    }
+                }
+            }
+        };
+
+
+        displayList() {
+            var cur = this.head;
+            var str = " ";
+            while (cur) {
+                str += cur.data + " ";
+                cur = cur.next;
+            }
+            console.log(str);
+        }
+    }
+
+    var list = new LinkedList();
+    // let choice;
+
+    // document.write("0.Exit");
+    // document.write("1.insert the element");
+    // document.write("2.delete the element");
+    // document.write("3.display the element");
+    // document.write("");
+    // document.write("Enter you choice : ");
+    // do {
+    //     choice = window.prompt("Enter the choice: ");
+    //     switch (choice) {
+    //         case "0":
+    //             break;
+    //         case "1":
+    //             var data;
+    //             data = window.prompt("enter the data");
+    //             list.add(data);
+    //             break;
+
+    //         case "2":
+    //             var num;
+    //             // console.log("Enter the position where you delete the element");
+    //             num = window.prompt("Enter the position where you delete the element");
+    //             list.delete(num);
+    //             break;
+
+    //         case "3":
+    //             list.displayList();
+    //             break;
+
+    //         default:
+    //             console.log("Please enter correct choice");
+    //             break;
+    //     }
+
+    // } while (choice != 0);
+
+    list.add(10);
+    list.add(43);
+    list.add(16);
+    list.add(34);
+    list.add(98);
+    list.displayList();
+
+    list.deleteN(43);
+    console.log("After deleting 43")
+    list.displayList()
+</script>
+
+</html>
