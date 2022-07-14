@@ -47,4 +47,3 @@ for i in range(M):
 
 
 
-#written by Ayush Solanki :-)
